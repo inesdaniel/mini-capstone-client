@@ -33,5 +33,23 @@ class Client::ProductsController < ApplicationController
     render "edit.html.erb"
   end
 
+  def update
+    client_params = {
+      input_name: params[:input_name],
+      input_description: params[:input_description],
+      input_price: params[:input_price],
+      input_image_url: params[:input_image_url]
+    }
+    response = Unirest.patch("http://localhost:3000/api/products/#{params[:id]}",
+      parameters: client_params)
+    @product = response.body
+    render "show.html.erb"
+  end
+
+  def destroy
+    response = Unirest.delete("http://localhost:3000/api/products/#{params[:id]}")
+    render "destroy.html.erb"
+  end
+
 
 end
