@@ -20,3 +20,7 @@ edit page
     <input type="submit" value="Edit a product">
   </div>
 <% end %>
+
+<p>Click below to delete this product</p>
+
+<a href="/client/products/<%= @product["id"]%>" data-method="delete">Delete Product</a>

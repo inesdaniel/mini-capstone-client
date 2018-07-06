@@ -25,6 +25,8 @@ class Client::ProductsController < ApplicationController
         input_image_url: params[:input_image_url]
       }
       )
+    @product = response.body
+    redirect_to "/client/products/#{@product["id"]}"
   end
   def edit
     product_id = params[:id]
@@ -43,7 +45,7 @@ class Client::ProductsController < ApplicationController
     response = Unirest.patch("http://localhost:3000/api/products/#{params[:id]}",
       parameters: client_params)
     @product = response.body
-    render "show.html.erb"
+    redirect_to "/client/products/#{@product["id"]}"
   end
 
   def destroy
