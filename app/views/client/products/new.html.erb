@@ -1,8 +1,5 @@
 <%= form_tag "/client/products", method: :post do %>
   <div>
-    Id: <input type="text" name="input_id">
-  </div>
-  <div>
     Name: <input type="text" name="input_name">
   </div>
   <div>
@@ -13,6 +10,9 @@
   </div>
   <div>
     Image_url: <input type="text" name="input_image_url">
+  </div>
+  <div>
+    Stocked: <input type="text" name="input_stocked">
   </div>
   <div>
     <input type="submit" value="Create a new product">

@@ -2,19 +2,19 @@ edit page
 
 <%= form_tag "/client/products/#{@product["id"]}", method: :patch do %>
   <div>
-    Id: <input type="text" name="input_id" value="<% @product["id"] %>">
+    Name: <input type="text" name="input_name" value="<%= @product["name"]%>">
   </div>
   <div>
-    Name: <input type="text" name="input_name" value="<% @product["name"]%>">
+    Description: <input type="text" name="input_description" value="<%= @product["description"]%>">
   </div>
   <div>
-    Description: <input type="text" name="input_description" value="<% @product["description"]%>">
+    Price: <input type="text" name="input_price" value="<%= @product["price"]%>">
   </div>
   <div>
-    Price: <input type="text" name="input_price" value="<% @product["price"]%>">
+    Image_url: <input type="text" name="input_image_url" value="<%= @product["image_url"]%>">
   </div>
   <div>
-    Image_url: <input type="text" name="input_image_url" value="<% @product["image_url"]%>">
+    Stocked: <input type="text" name="input_stocked" value="<%= @product["stocked"]%>">
   </div>
   <div>
     <input type="submit" value="Edit a product">

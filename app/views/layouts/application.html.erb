@@ -10,6 +10,15 @@
   </head>
 
   <body>
+    <div>
+      <a href="/client/products">Home</a>
+    </div>
+    <div>
+      <a href="/client/products/new">New Product</a>
+    </div>
+    <% flash.each do |name, message| %>
+      <%= message %>
+    <% end %>
     <%= yield %>
   </body>
 </html>
