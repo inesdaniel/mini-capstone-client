@@ -1,4 +1,7 @@
-
+<%= form_tag "/client/products", method: :get do %>
+  <input type="text" name="client_search">
+  <input type="submit" value="Search for product">
+<% end %>
 
 <% @products.each do |product| %>
   <p>id: <%= product["id"]  %></p>
