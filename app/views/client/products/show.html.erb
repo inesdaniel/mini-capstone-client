@@ -11,6 +11,7 @@
   <% end %>
 <p>Image_url: <%= @product["image_url"] %></p>
 <p>Stocked: <%= @product["stocked"] %></p>
+<p>Supplier: <%= @product["formatted"]["supplier"] %></p>
 
 <p><a href="/client/products/<%= @product["id"]%>/edit">Edit this product</a></p>
 
