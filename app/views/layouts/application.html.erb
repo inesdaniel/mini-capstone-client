@@ -16,6 +16,13 @@
     <div>
       <a href="/client/products/new">New Product</a>
     </div>
+    <div>
+    <a href="/client/signup">Sign Up</a>
+    </div>
+    <div>
+      <a href="/client/login">Log In</a>
+      <a href="/client/logout" data-method="delete">Log Out</a>
+    </div>
     <% flash.each do |name, message| %>
       <%= message %>
     <% end %>

@@ -26,7 +26,6 @@ class Client::ProductsController < ApplicationController
         input_name: params[:input_name],
         input_description: params[:input_description],
         input_price: params[:input_price],
-        input_image_url: params[:input_image_url],
         input_stocked: params[:input_stocked]
       }
     response = Unirest.post("http://localhost:3000/api/products",
@@ -47,7 +46,6 @@ class Client::ProductsController < ApplicationController
       input_name: params[:input_name],
       input_description: params[:input_description],
       input_price: params[:input_price],
-      input_image_url: params[:input_image_url],
       input_stocked: params[:input_stocked]
 
     }
