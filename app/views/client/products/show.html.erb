@@ -1,5 +1,8 @@
-
+<% @product["images"].each do |image| %>
+    <img src="<%= image["first_image"] %>" alt = "">
+  <% end %>
 <p>Name: <%= @product["name"] %></p>
+<p>Made By: <%= @product["supplier"]["name"]%></p>
 <p>Description: <%= @product["description"] %></p>
 <p>Price: <%= @product["price"]%></p>
 <p>Tax: <%= @product["formatted"]["tax"]%></p>
@@ -9,15 +12,15 @@
   <% else %>
     <h1 style="color: red;">Everyday Value!</h1>
   <% end %>
-<p>Stocked: <%= @product["stocked"] %></p>
-<p>Supplier: <%= @product["supplier"]["name"] %></p>
+<p>Availabily: <%= @product["stocked"] %></p>
 
 <p><a href="/client/products/<%= @product["id"]%>/edit">Edit this product</a></p>
 
 <p><a href="/client/products/<%= @product["id"]%>" data-method="delete">Delete this product</a></p>
 
+<p>Order this product:</p>
 <%= form_tag "/client/orders", method: :post do %>
-  <p>Product Id: <input type="text" name="product_id"></p>
+  <p>Product Id: <input type="text" name="product_id" value="<%= @product["id"]%>"></p>
   <p>Quantity: <input type="text" name="quantity"></p>
-  <input type="submit" name="place order">
+  <input type="submit" value="Place Order">
 <% end %>

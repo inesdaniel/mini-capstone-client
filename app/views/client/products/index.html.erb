@@ -1,5 +1,6 @@
 <%= form_tag "/client/products", method: :get do %>
   <input type="text" name="client_search">
+  <input type="text" name="client_sort_by" placeholder= "Sort by what?">
   <input type="submit" value="Search for product">
 <% end %>
 
@@ -16,7 +17,11 @@
     <h1 style="color: red;">Everyday Value!</h1>
   <% end %>
   <p>Stocked: <%= product["stocked"] %></p>
+  <% product["images"].each do |image| %>
+    <img src="<%= image["first_image"] %>" alt = "">
+  <% end %>
   <hr>
+
 <% end %>
 
 

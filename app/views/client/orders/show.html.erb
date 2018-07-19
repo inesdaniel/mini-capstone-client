@@ -1,8 +1,11 @@
 
+<p>Id: <%= @order["id"]%></p>
 <p>User Id: <%= @order["user_id"]%></p>
 <p>Product Id: <%= @order["product_id"]%></p>
 <p>Quantity: <%= @order["quantity"]%></p>
 <p>Subtotal: <%= @order["subtotal"]%></p>
 <p>Tax: <%= @order["tax"]%></p>
 <p>Total: <%= @order["total"]%></p>
+<p>Email: <%= @order["user"]["email"]%></p>
+<p>Product Name: <%= @order["product"]["name"]%></p>
 
