@@ -1,20 +1,12 @@
-<p>this is the index!</p>
+<h2>Shopping Cart</h2>
+<hr>
 
-<%= @carted_product%>
 
-
-<% @carted_product.each do |carted_product| %>
-  <p>User Id: <%= carted_product["user_id"]  %></p>
-  <p>Product Id: <a href="/client/carted_product/<%= carted_product["id"]%>"><%= carted_product["product_id"] %></a></p>
-  <p>Quantity: <%= carted_product["quantity"] %></p>
-  <p> Status: <%= carted_product["status"]%></p>
+<% @carted_products.each do |carted_product| %>
+  <p>User Id: <%= carted_product["id"]  %></p>
+  <p>Name: <%= carted_product["product"]["name"] %></p>
+  <p>Price: <%= carted_product["product"]["price"] %></p>
+  <p>Quantity: <%= carted_product["quantity"]%></p>
   
-  <% if carted_product["price"].to_i < 4 %>
-    <h1 style="color: red;">Discount Item!</h1>
-  <% else %>
-    <h1 style="color: red;">Everyday Value!</h1>
-  <% end %>
-
-
   <hr>
 <% end %>

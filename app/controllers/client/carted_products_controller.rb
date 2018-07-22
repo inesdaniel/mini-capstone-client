@@ -1,7 +1,7 @@
 class Client::CartedProductsController < ApplicationController
   def index
     response = Unirest.get("http://localhost:3000/api/carted_products")
-    @carted_product = response
+    @carted_products = response.body
     render "index.html.erb"
   end
 
@@ -19,6 +19,6 @@ class Client::CartedProductsController < ApplicationController
       )
     @carted_product = response.body
     flash[:success] = "You added to your cart!"
-    render "show.html.erb"
+    redirect_to "/client/carted_products"
   end
 end
