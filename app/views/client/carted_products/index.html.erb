@@ -1,0 +1,20 @@
+<p>this is the index!</p>
+
+<%= @carted_product%>
+
+
+<% @carted_product.each do |carted_product| %>
+  <p>User Id: <%= carted_product["user_id"]  %></p>
+  <p>Product Id: <a href="/client/carted_product/<%= carted_product["id"]%>"><%= carted_product["product_id"] %></a></p>
+  <p>Quantity: <%= carted_product["quantity"] %></p>
+  <p> Status: <%= carted_product["status"]%></p>
+  
+  <% if carted_product["price"].to_i < 4 %>
+    <h1 style="color: red;">Discount Item!</h1>
+  <% else %>
+    <h1 style="color: red;">Everyday Value!</h1>
+  <% end %>
+
+
+  <hr>
+<% end %>
