@@ -1,4 +1,10 @@
-edit page
+Edit This Product Below
+
+<% if @errors %>
+  <% @errors.each do |error| %>
+    <p><%= error %></p>
+  <% end %>
+<% end %>
 
 <%= form_tag "/client/products/#{@product["id"]}", method: :patch do %>
   <div>
@@ -12,6 +18,9 @@ edit page
   </div>
   <div>
     Stocked: <input type="text" name="input_stocked" value="<%= @product["stocked"]%>">
+  </div>
+   <div>
+    Supplier: <input type="text" name="input_supplier_id" value="<%= @product[:input_supplier_id] %>">
   </div>
   <div>
     <input type="submit" value="Edit a product">

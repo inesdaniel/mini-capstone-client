@@ -22,11 +22,12 @@ class Client::ProductsController < ApplicationController
   end
 
   def new
+    @product = { }
     render "new.html.erb"
   end
 
   def create
-    client_params = {
+    @product = {
         input_name: params[:input_name],
         input_description: params[:input_description],
         input_price: params[:input_price],
@@ -34,10 +35,15 @@ class Client::ProductsController < ApplicationController
         input_supplier_id: params[:input_supplier_id]
       }
     response = Unirest.post("http://localhost:3000/api/products",
-      parameters: client_params
+      parameters: @product
       )
-    flash[:success] = "You made a new product!"
-    redirect_to "/client/products"
+    if response.code == 200
+      flash[:success] = "You made a new product!"
+      redirect_to "/client/products"
+    else
+      @errors = response.body["errors"]
+      render "new.html.erb"
+    end
   end
   
   def show
@@ -55,7 +61,7 @@ class Client::ProductsController < ApplicationController
   end
 
   def update
-    client_params = {
+    @product = {
       input_name: params[:input_name],
       input_description: params[:input_description],
       input_price: params[:input_price],
@@ -64,10 +70,14 @@ class Client::ProductsController < ApplicationController
 
     }
     response = Unirest.patch("http://localhost:3000/api/products/#{params[:id]}",
-      parameters: client_params)
-    
-    flash[:success] = "You changed a product"
-    redirect_to "/client/products/#{params[:id]}"
+      parameters: @product)
+    if response.code == 200
+      flash[:success] = "You changed a product"
+      redirect_to "/client/products/#{params[:id]}"
+    else
+      @errors = response.body["errors"]
+      render "edit.html.erb"
+    end
   end
 
   def destroy
