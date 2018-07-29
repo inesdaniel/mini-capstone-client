@@ -4,24 +4,31 @@
   <input type="submit" value="Search for product">
 <% end %>
 
-<% @products.each do |product| %>
-  <p>id: <%= product["id"]  %></p>
-  <p>Name: <a href="/client/products/<%= product["id"]%>"><%= product["name"] %></a></p>
-  <p>Description: <%= product["description"] %></p>
-  <p>Price: <%= product["price"]%></p>
-  <p>Tax: <%= product["formatted"]["tax"] %></p>
-  <p>Total: <%= product["formatted"]["total"] %></p>
-  <% if product["price"].to_i < 4 %>
-    <h1 style="color: red;">Discount Item!</h1>
-  <% else %>
-    <h1 style="color: red;">Everyday Value!</h1>
-  <% end %>
-  <p>Stocked: <%= product["stocked"] %></p>
-  <% product["images"].each do |image| %>
-    <img src="<%= image["first_image"] %>" alt = "">
+<div class="row">
+  <% @products.each do |product| %>
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"><%= product["name"] %></h5>
+          <p class="card-text"><%= product["description"] %></p>
+          <a href="/client/products/<%= product["id"]%>" class="btn btn-primary">View Product</a>
+            <p>id: <%= product["id"]  %></p>
+            <p>Price: <%= product["price"]%></p>
+            <p>Tax: <%= product["formatted"]["tax"] %></p>
+            <p>Total: <%= product["formatted"]["total"] %></p>
+            <% if product["price"].to_i < 4 %>
+              <h3 style="color: red;">Discount Item!</h3>
+            <% else %>
+              <h3 style="color: red;">Everyday Value!</h3>
+            <% end %>
+            <p>Stocked: <%= product["stocked"] %></p>
+            <% product["images"].each do |image| %>
+              <img style="width: 100px; height: 100px;" src="<%= image["first_image"] %>" alt = "">
+            <% end %>
+        </div>
+      </div>
+    </div>
   <% end %>
   <hr>
-
-<% end %>
-
+ </div>
 
